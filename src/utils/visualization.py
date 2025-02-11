@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def plot_fuel_type_count(df: pd.DataFrame):
+def plot_feature_count(df: pd.DataFrame, feature: str):
     """
     Genera un gráfico de barras que muestra la cantidad de vehículos por tipo de combustible.
 
@@ -10,14 +10,14 @@ def plot_fuel_type_count(df: pd.DataFrame):
     :return: Figura de Matplotlib con el gráfico generado.
     """
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.countplot(x=df["Fuel_Type"], palette="viridis", ax=ax)
-    ax.set_xlabel("Tipo de Combustible")
+    sns.countplot(x=df[feature], palette="viridis", ax=ax)
+    ax.set_xlabel(feature)
     ax.set_ylabel("Cantidad de Vehículos")
-    ax.set_title("Cantidad de Vehículos por Tipo de Combustible")
+    ax.set_title(f"Cantidad de Vehículos por {feature}")
     ax.grid()
     return fig
 
-def plot_price_distribution(df: pd.DataFrame):
+def plot_metric_distribution(df: pd.DataFrame, metric: str):
     """
     Genera un gráfico de barras que muestra la cantidad de vehículos por tipo de combustible.
 
@@ -25,9 +25,9 @@ def plot_price_distribution(df: pd.DataFrame):
     :return: Figura de Matplotlib con el gráfico generado.
     """
     fig, ax = plt.subplots(figsize=(8, 5))
-    df["Price"].hist(bins=20)
+    df[metric].hist(bins=20)
     ax.set_xlabel("precio (USD)")
     ax.set_ylabel("Cantidad de Vehículos")
-    ax.set_title("Cantidad de Vehículos por precio")
+    ax.set_title(f"Cantidad de Vehículos por {metric}")
     ax.grid()
     return fig
